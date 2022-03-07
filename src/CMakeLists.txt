@@ -12,4 +12,4 @@ if (MSVC)
   include(InstallRequiredSystemLibraries)
 endif()
 
-install(TARGETS main DESTINATION bin)
+install(TARGETS main RUNTIME DESTINATION bin)

@@ -27,14 +27,20 @@ jobs:
       shell: bash
       run: cmake --build build
 
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.os }}-build
+        path: build
+
     - name: Install
       shell: bash
       run: |
         mkdir install
         cmake --install build --prefix install
 
-    - name: Upload artifact
+    - name: Upload install artifact
       uses: actions/upload-artifact@v2
       with:
-        name: ${{ matrix.os }}
+        name: ${{ matrix.os }}-install
         path: install
