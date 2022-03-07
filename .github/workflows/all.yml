@@ -28,12 +28,12 @@ jobs:
       run: cmake --build build
 
     - name: Run (Ubuntu)
-      if: ${{ startsWith('ubuntu', matrix.os) }}
+      if: ${{ startsWith(matrix.os, 'ubuntu') }}
       shell: bash
       run: ./build/main out.txt
 
     - name: Run (Windows)
-      if: ${{ startsWith('windows', matrix.os) }}
+      if: ${{ startsWith(matrix.os, 'windows') }}
       shell: bash
       run: ./build/main.exe out.txt
 
