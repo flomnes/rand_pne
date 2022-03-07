@@ -1,0 +1,39 @@
+name: Ubuntu & Windows CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Configure
+        shell: bash
+        run: |
+          mkdir build
+          cmake -B build -S src
+
+      - name: Build
+        shell: bash
+        run: |
+          cmake -B build --build
+
+      - name: Run
+        shell: bash
+        run: |
+          ./build/main out.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+      with:
+        name: out-${{ matrix.os }}.txt
+        path: out.txt
