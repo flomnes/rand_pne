@@ -35,10 +35,10 @@ static void write(std::ostream& out,
   }
 }
 
-int main(int argc, char** argv) {
+int main() {
   auto t1 = terms(X0, N_TERMS);
   auto t2 = terms(X0 + 1e-12, N_TERMS);
-  std::ofstream outfile(argv[1]);
+  std::ofstream outfile("out-rand.txt");
   outfile << std::setprecision(12);
   write(outfile, {t1, t2});
 }
