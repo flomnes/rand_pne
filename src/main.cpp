@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include "rand.hpp"
 
 # define X0            0.192837465
@@ -38,5 +39,6 @@ int main(int argc, char** argv) {
   auto t1 = terms(X0, N_TERMS);
   auto t2 = terms(X0 + 1e-12, N_TERMS);
   std::ofstream outfile(argv[1]);
+  outfile << std::setprecision(12);
   write(outfile, {t1, t2});
 }

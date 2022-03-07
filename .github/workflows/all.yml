@@ -27,18 +27,8 @@ jobs:
       shell: bash
       run: cmake --build build
 
-    - name: Run (Ubuntu)
-      if: ${{ startsWith(matrix.os, 'ubuntu') }}
-      shell: bash
-      run: ./build/main out.txt
-
-    - name: Run (Windows)
-      if: ${{ startsWith(matrix.os, 'windows') }}
-      shell: bash
-      run: ./build/main.exe out.txt
-
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: out-${{ matrix.os }}.txt
-        path: out.txt
+        name: ${{ matrix.os }}
+        path: build
