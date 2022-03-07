@@ -9,8 +9,6 @@ add_executable(main main.cpp)
 target_link_libraries(main rand)
 
 if (MSVC)
-  set(CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS 1)
-  set(CMAKE_INSTALL_UCRT_LIBRARIES 1)
   include(InstallRequiredSystemLibraries)
 endif()
 
