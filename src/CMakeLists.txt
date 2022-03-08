@@ -11,10 +11,6 @@ target_link_libraries(main rand)
 
 if (MSVC)
   include(InstallRequiredSystemLibraries)
-
-  set_target_properties(main
-    PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 endif()
 
 install(TARGETS main RUNTIME DESTINATION bin)
